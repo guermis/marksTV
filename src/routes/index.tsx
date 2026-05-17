@@ -183,7 +183,7 @@ function Hero() {
     <section className="bg-hero relative overflow-hidden">
       <div className="absolute top-20 -left-32 w-96 h-96 rounded-full bg-primary/30 blur-[120px]" />
       <div className="absolute bottom-0 -right-32 w-96 h-96 rounded-full bg-accent/20 blur-[120px]" />
-      <div className="container mx-auto px-5 pt-16 pb-20 md:pt-24 md:pb-28 relative">
+      <div className="container mx-auto px-5 pt-16 pb-20 md:pt-24 md:pb-[90px] relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left reveal">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-semibold text-primary mb-6">
@@ -246,7 +246,7 @@ function Devices() {
     "Apple TV+", "Globoplay", "Paramount+", "Hulu", "AMC+",
   ];
   return (
-    <section className="py-20 md:py-28 border-t border-white/5">
+    <section className="py-20 md:py-[90px] border-t border-white/5">
       <div className="container mx-auto px-5">
         <div className="text-center mb-14 reveal">
           <h2 className="font-display font-bold text-3xl md:text-5xl">
@@ -355,7 +355,7 @@ function Sports() {
 
 function Lifestyle() {
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-20 md:py-[90px]">
       <div className="container mx-auto px-5">
         <div className="text-center mb-14 max-w-2xl mx-auto reveal">
           <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">Momentos que importam</p>
@@ -410,7 +410,7 @@ function Benefits() {
     { icon: Zap, title: "Suporte humano 24/7", desc: "Atendimento direto pelo WhatsApp sempre que precisar." },
   ];
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-20 md:py-[90px]">
       <div className="container mx-auto px-5">
         <div className="text-center mb-14 max-w-2xl mx-auto reveal">
           <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">Por que escolher</p>
@@ -448,7 +448,7 @@ function Pricing() {
   const features = ["+17 mil conteúdos", "Filmes e séries em SD, HD, FullHD e 4K", "Liberação imediata", "Suporte via WhatsApp"];
 
   return (
-    <section id="planos" className="py-20 md:py-28">
+    <section id="planos" className="py-20 md:py-[90px]">
       <div className="container mx-auto px-5">
         <div className="text-center mb-14 reveal">
           <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">Nossos planos</p>
@@ -510,7 +510,7 @@ function Pricing() {
 function Testimonials() {
   const images = [testimonial1, testimonial2, testimonial3];
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-20 md:py-[90px]">
       <div className="container mx-auto px-5">
         <div className="text-center mb-14 reveal">
           <div className="flex justify-center gap-1 mb-4">
@@ -544,7 +544,7 @@ function FAQ() {
   ];
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-20 md:py-[90px]">
       <div className="container mx-auto px-5 max-w-3xl">
         <div className="text-center mb-12 reveal">
           <h2 className="font-display font-bold text-3xl md:text-5xl">
