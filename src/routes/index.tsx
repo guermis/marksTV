@@ -481,7 +481,7 @@ function FAQ() {
   const faqs = [
     { q: "Como vou receber?", a: "Os dados de acesso serão enviados automaticamente via WhatsApp logo após a confirmação do pagamento." },
     { q: "Qual a velocidade de internet eu preciso ter?", a: "Você não precisa se preocupar com isso. Nossos planos funcionam perfeitamente em qualquer velocidade." },
-    { q: "Posso assistir em qualquer modelo de TV?", a: "Sim, você pode acessar filmes, séries e canais em qualquer TV que conecte a uma TV Box, além de Smart TVs, celulares, notebooks e Xbox One." },
+    { q: "Posso assistir em qualquer modelo de TV?", a: "Sim, você pode acessar filmes, séries e canais em qualquer TV que conecte a uma TV Box, além de Smart TVs, celulares, notebooks e consoles." },
     { q: "E se eu não gostar?", a: "É só entrar em contato com a gente. Damos todo o suporte e fazemos o seu reembolso sem burocracia." },
   ];
   const [open, setOpen] = useState<number | null>(0);
