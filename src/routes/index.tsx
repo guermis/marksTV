@@ -35,76 +35,7 @@ export const Route = createFileRoute("/")({
 
 const WHATSAPP_URL = "https://wa.me/5512991860629?text=" + encodeURIComponent("Olá! Gostaria de saber mais sobre o IPTV.");
 
-/* ---------------- Custom Cursor ---------------- */
-function CustomCursor() {
-  const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (window.matchMedia("(pointer: coarse)").matches) return;
-
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let ringX = mouseX;
-    let ringY = mouseY;
-    let raf = 0;
-
-    const onMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
-      }
-    };
-
-    const tick = () => {
-      ringX += (mouseX - ringX) * 0.18;
-      ringY += (mouseY - ringY) * 0.18;
-      if (ringRef.current) {
-        ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-
-    const onOver = (e: MouseEvent) => {
-      const t = e.target as HTMLElement | null;
-      if (t && t.closest('a, button, [role="button"], input, textarea, select, label, summary')) {
-        ringRef.current?.classList.add("is-hover");
-      }
-    };
-    const onOut = (e: MouseEvent) => {
-      const t = e.target as HTMLElement | null;
-      if (t && t.closest('a, button, [role="button"], input, textarea, select, label, summary')) {
-        ringRef.current?.classList.remove("is-hover");
-      }
-    };
-    const onDown = () => ringRef.current?.classList.add("is-down");
-    const onUp = () => ringRef.current?.classList.remove("is-down");
-
-    window.addEventListener("mousemove", onMove, { passive: true });
-    document.addEventListener("mouseover", onOver);
-    document.addEventListener("mouseout", onOut);
-    window.addEventListener("mousedown", onDown);
-    window.addEventListener("mouseup", onUp);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("mousemove", onMove);
-      document.removeEventListener("mouseover", onOver);
-      document.removeEventListener("mouseout", onOut);
-      window.removeEventListener("mousedown", onDown);
-      window.removeEventListener("mouseup", onUp);
-    };
-  }, []);
-
-  return (
-    <>
-      <div ref={ringRef} className="cursor-ring" aria-hidden="true" />
-      <div ref={dotRef} className="cursor-dot" aria-hidden="true" />
-    </>
-  );
-}
+/* Custom cursor removed — using native cursor */
 
 /* ---------------- Reveal on scroll ---------------- */
 function useReveal() {
@@ -144,7 +75,6 @@ function Index() {
   useReveal();
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <CustomCursor />
       <Header />
       <Hero />
       <Devices />
