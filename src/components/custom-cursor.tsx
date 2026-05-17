@@ -1,54 +1,53 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
-  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    // Disable on touch / coarse-pointer devices
+    if (typeof window === "undefined") return;
     if (window.matchMedia("(pointer: coarse)").matches) return;
-    setEnabled(true);
 
-    const dot = dotRef.current!;
-    const ring = ringRef.current!;
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+    if (!dot || !ring) return;
 
-    // Target position (mouse) and current ring position (interpolated)
     let mx = window.innerWidth / 2;
     let my = window.innerHeight / 2;
     let rx = mx;
     let ry = my;
-    let raf = 0;
+
+    dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
+    ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
 
     const onMove = (e: MouseEvent) => {
       mx = e.clientX;
       my = e.clientY;
-      // Dot tracks instantly
       dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
     };
 
     const tick = () => {
-      // Spring-style smoothing for ring
-      rx += (mx - rx) * 0.18;
-      ry += (my - ry) * 0.18;
+      rx += (mx - rx) * 0.2;
+      ry += (my - ry) * 0.2;
       ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
       raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
+    let raf = requestAnimationFrame(tick);
 
     const onDown = () => ring.classList.add("is-down");
     const onUp = () => ring.classList.remove("is-down");
 
-    const isInteractive = (el: Element | null) =>
-      !!el?.closest(
+    const isInteractive = (el: EventTarget | null) =>
+      el instanceof Element &&
+      !!el.closest(
         'a, button, [role="button"], input, select, textarea, label, summary, [data-cursor-hover]'
       );
 
     const onOver = (e: MouseEvent) => {
-      if (isInteractive(e.target as Element)) ring.classList.add("is-hover");
+      if (isInteractive(e.target)) ring.classList.add("is-hover");
     };
     const onOut = (e: MouseEvent) => {
-      if (isInteractive(e.target as Element)) ring.classList.remove("is-hover");
+      if (isInteractive(e.target)) ring.classList.remove("is-hover");
     };
 
     window.addEventListener("mousemove", onMove, { passive: true });
@@ -70,7 +69,6 @@ export function CustomCursor() {
     };
   }, []);
 
-  if (!enabled) return null;
   return (
     <>
       <div ref={ringRef} className="cursor-ring" aria-hidden />

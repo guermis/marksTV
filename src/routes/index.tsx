@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import {
-  Tv, Smartphone, Laptop, Gamepad2, MonitorPlay, Tablet, Sparkles,
+  Tv, Smartphone, Laptop, Gamepad2, MonitorPlay,
   Zap, Trophy, ImageIcon, Wallet, Rocket, Check, Award, Clapperboard,
-  ChevronDown, MessageCircle, Star, Play, Flame, Goal, ArrowRight,
+  ChevronDown, MessageCircle, Star, Play, Goal, ArrowRight,
 } from "lucide-react";
 import testimonial1 from "@/assets/testimonial-1.jpg";
 import testimonial2 from "@/assets/testimonial-2.jpg";
@@ -38,7 +38,7 @@ export const Route = createFileRoute("/")({
 
 const WHATSAPP_URL = "https://wa.me/5512991860629?text=" + encodeURIComponent("Olá! Gostaria de saber mais sobre o IPTV.");
 
-/* Custom cursor removed — using native cursor */
+
 
 /* ---------------- Reveal on scroll ---------------- */
 function useReveal() {
@@ -175,15 +175,6 @@ function Hero() {
         </div>
       </div>
     </section>
-  );
-}
-
-function Stat({ value, label }: { value: string; label: string }) {
-  return (
-    <div>
-      <div className="font-display font-bold text-2xl text-foreground">{value}</div>
-      <div className="text-xs uppercase tracking-wider">{label}</div>
-    </div>
   );
 }
 
@@ -490,7 +481,7 @@ function FAQ() {
   const faqs = [
     { q: "Como vou receber?", a: "Os dados de acesso serão enviados automaticamente via WhatsApp logo após a confirmação do pagamento." },
     { q: "Qual a velocidade de internet eu preciso ter?", a: "Você não precisa se preocupar com isso. Nossos planos funcionam perfeitamente em qualquer velocidade." },
-    { q: "Posso assistir em qualquer modelo de TV?", a: "Sim, você pode acessar filmes, séries e canais em qualquer TV que conecte a uma TV Box, além de Smart TVs, celulares, notebooks e Xbox One." },
+    { q: "Posso assistir em qualquer modelo de TV?", a: "Sim, você pode acessar filmes, séries e canais em qualquer TV que conecte a uma TV Box, além de Smart TVs, celulares, notebooks e consoles." },
     { q: "E se eu não gostar?", a: "É só entrar em contato com a gente. Damos todo o suporte e fazemos o seu reembolso sem burocracia." },
   ];
   const [open, setOpen] = useState<number | null>(0);
