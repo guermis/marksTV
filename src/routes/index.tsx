@@ -251,9 +251,6 @@ function Sports() {
       </div>
       <div className="container mx-auto px-5 relative">
         <div className="max-w-4xl mx-auto text-center reveal">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-primary text-xs font-bold text-primary-foreground mb-6 uppercase tracking-widest">
-            <Flame className="w-3.5 h-3.5" /> Lâmina esportes
-          </div>
           <h2 className="font-display font-extrabold text-4xl md:text-6xl lg:text-7xl leading-[1.02]">
             NÃO PERCA <span className="text-gradient">NENHUM GOL</span>
           </h2>
@@ -540,8 +537,8 @@ function FinalCTA() {
   return (
     <section className="py-20">
       <div className="container mx-auto px-5">
-        <div className="relative overflow-hidden rounded-3xl glass-primary p-10 md:p-16 text-center shadow-glow reveal">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent_60%)] shadow-none" />
+        <div className="relative overflow-hidden rounded-3xl glass-primary p-10 md:p-16 text-center reveal">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.15),transparent_60%)]" />
           <div className="relative">
             <h2 className="font-display font-extrabold text-3xl md:text-5xl text-primary-foreground">
               Pronto pra assistir tudo?
