@@ -412,9 +412,9 @@ function Pricing() {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`reveal relative rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 ${
+              className={`reveal relative rounded-3xl p-8 transition-all duration-700 ease-out will-change-transform hover:scale-[1.02] ${
                 plan.highlight
-                  ? "glass-primary border border-primary/60 md:scale-105 md:py-12"
+                  ? "glass-primary border border-primary/60 md:scale-105 md:py-12 hover:md:scale-[1.07]"
                   : "glass hover:border-primary/50"
               }`}
             >
