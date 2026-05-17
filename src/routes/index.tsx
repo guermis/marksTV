@@ -9,13 +9,15 @@ import testimonial1 from "@/assets/testimonial-1.jpg";
 import testimonial2 from "@/assets/testimonial-2.jpg";
 import testimonial3 from "@/assets/testimonial-3.jpg";
 import heroNew from "@/assets/hero-new.png";
+import futebolImg from "@/assets/futebol.jpg";
+import familiaImg from "@/assets/familia.jpg";
+import casalImg from "@/assets/casal.jpg";
 
-// Real photos (Unsplash) — keyword-based, always returns a relevant image
 const heroDevices     = heroNew;
-const familyWatching  = "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=1400&q=80&auto=format&fit=crop";
+const familyWatching  = familiaImg;
 const sportsFootball  = "https://images.unsplash.com/photo-1459865264687-595d652de67e?w=1600&q=80&auto=format&fit=crop";
-const coupleMovie     = "https://images.unsplash.com/photo-1543536448-1e76fc2795bf?w=1400&q=80&auto=format&fit=crop";
-const friendsSports   = "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=1400&q=80&auto=format&fit=crop";
+const coupleMovie     = casalImg;
+const friendsSports   = futebolImg;
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -249,9 +251,6 @@ function Sports() {
       </div>
       <div className="container mx-auto px-5 relative">
         <div className="max-w-4xl mx-auto text-center reveal">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-primary text-xs font-bold text-primary-foreground mb-6 uppercase tracking-widest">
-            <Flame className="w-3.5 h-3.5" /> Lâmina esportes
-          </div>
           <h2 className="font-display font-extrabold text-4xl md:text-6xl lg:text-7xl leading-[1.02]">
             NÃO PERCA <span className="text-gradient">NENHUM GOL</span>
           </h2>
@@ -538,8 +537,8 @@ function FinalCTA() {
   return (
     <section className="py-20">
       <div className="container mx-auto px-5">
-        <div className="relative overflow-hidden rounded-3xl glass-primary p-10 md:p-16 text-center shadow-glow reveal">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent_60%)] shadow-none" />
+        <div className="relative overflow-hidden rounded-3xl glass-primary p-10 md:p-16 text-center reveal">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.15),transparent_60%)]" />
           <div className="relative">
             <h2 className="font-display font-extrabold text-3xl md:text-5xl text-primary-foreground">
               Pronto pra assistir tudo?
