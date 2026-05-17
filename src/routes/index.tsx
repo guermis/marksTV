@@ -96,14 +96,14 @@ function Header() {
     <header className="sticky top-0 z-40 glass border-b border-white/5">
       <div className="container mx-auto px-5 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-9 h-9 rounded-lg bg-gradient-primary grid place-items-center shadow-glow">
+          <div className="w-9 h-9 rounded-lg bg-gradient-primary grid place-items-center">
             <Play className="w-4 h-4 text-primary-foreground fill-current" />
           </div>
           <span className="font-display font-bold text-lg tracking-tight">Marks IPTV</span>
         </div>
         <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
-          className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold px-5 py-2 rounded-full bg-gradient-primary text-primary-foreground hover:brightness-110 transition">
-          <MessageCircle className="w-4 h-4" /> Falar no WhatsApp
+          className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold px-5 py-2 rounded-full border border-primary/60 text-primary hover:bg-primary/10 transition tracking-widest uppercase">
+          Teste Grátis
         </a>
       </div>
     </header>
@@ -111,44 +111,54 @@ function Header() {
 }
 
 function Hero() {
+  const deviceIcons = [
+    { icon: Smartphone, label: "Celular" },
+    { icon: Laptop, label: "Notebook" },
+    { icon: MonitorPlay, label: "TV Box" },
+    { icon: Tablet, label: "Tablet" },
+  ];
   return (
     <section className="bg-hero relative overflow-hidden">
-      <div className="absolute top-20 -left-32 w-96 h-96 rounded-full bg-primary/30 blur-[120px]" />
-      <div className="absolute bottom-0 -right-32 w-96 h-96 rounded-full bg-accent/20 blur-[120px]" />
-      <div className="container mx-auto px-5 pt-16 pb-20 md:pt-24 md:pb-[90px] relative">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="text-center lg:text-left reveal">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-semibold text-primary mb-6">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              Liberação imediata após pagamento
-            </div>
-            <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05]">
+      <div className="container mx-auto px-5 pt-20 pb-24 md:pt-28 md:pb-[110px] relative">
+        <div className="grid lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-6 text-center lg:text-left reveal">
+            <h1 className="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl leading-[0.95] tracking-tight">
               O MELHOR<br />
-              <span className="text-gradient">IPTV DO BRASIL</span>
+              IPTV<br className="hidden sm:block" /> <span className="sm:hidden">DO BRASIL</span><span className="hidden sm:inline">DO BRASIL</span>
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
-              Assista onde e quando quiser. <span className="text-foreground font-medium">Cancele quando quiser.</span>
+            <p className="mt-7 text-lg md:text-xl text-muted-foreground max-w-md mx-auto lg:mx-0 leading-relaxed">
+              Assista onde e quando quiser.<br />
+              Cancele quando quiser.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-              <CTAButton variant="primary" className="text-lg px-8 py-5">
-                <Zap className="w-5 h-5" /> TESTE GRÁTIS POR 6 HORAS
+            <div className="mt-9">
+              <CTAButton variant="primary" className="text-base px-9 py-5 tracking-wide">
+                TESTE GRÁTIS POR 6 HORAS
               </CTAButton>
             </div>
-            <div className="mt-10 flex flex-wrap gap-6 justify-center lg:justify-start text-sm text-muted-foreground">
-              <Stat value="+17.000" label="Conteúdos" />
-              <Stat value="4K" label="Qualidade" />
-              <Stat value="24/7" label="Suporte" />
-            </div>
           </div>
-          <div className="relative reveal animate-float">
-            <div className="absolute -inset-8 bg-primary/30 blur-3xl rounded-full" />
+          <div className="lg:col-span-6 relative reveal">
             <img
               src={heroDevices}
-              alt="Marks IPTV exibido em Smart TV e celular"
-              width={1536}
-              height={1024}
-              className="relative rounded-2xl shadow-card w-full"
+              alt="Marks IPTV em Smart TV, celular e tablet"
+              loading="eager"
+              className="relative w-full h-auto object-contain"
             />
+          </div>
+        </div>
+
+        <div className="mt-12 flex items-center justify-between gap-6 flex-wrap reveal">
+          <div className="flex gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-primary" />
+            <span className="w-2.5 h-2.5 rounded-full border border-white/40" />
+          </div>
+          <div className="flex items-end gap-7 ml-auto">
+            {deviceIcons.map(({ icon: Icon, label }) => (
+              <div key={label} className="flex flex-col items-center gap-1.5 text-muted-foreground">
+                <Icon className="w-6 h-6" strokeWidth={1.4} />
+                <span className="text-[10px] uppercase tracking-widest font-semibold">{label}</span>
+              </div>
+            ))}
+            <Sparkles className="w-5 h-5 text-primary ml-2" />
           </div>
         </div>
       </div>
