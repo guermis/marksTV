@@ -8,9 +8,10 @@ import {
 import testimonial1 from "@/assets/testimonial-1.jpg";
 import testimonial2 from "@/assets/testimonial-2.jpg";
 import testimonial3 from "@/assets/testimonial-3.jpg";
+import heroNew from "@/assets/hero-new.png";
 
 // Real photos (Unsplash) — keyword-based, always returns a relevant image
-const heroDevices     = "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=1600&q=80&auto=format&fit=crop";
+const heroDevices     = heroNew;
 const familyWatching  = "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=1400&q=80&auto=format&fit=crop";
 const sportsFootball  = "https://images.unsplash.com/photo-1459865264687-595d652de67e?w=1600&q=80&auto=format&fit=crop";
 const coupleMovie     = "https://images.unsplash.com/photo-1543536448-1e76fc2795bf?w=1400&q=80&auto=format&fit=crop";
