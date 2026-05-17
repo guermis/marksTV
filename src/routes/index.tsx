@@ -290,8 +290,8 @@ function Sports() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-8">
-              <p className="font-display font-bold text-2xl md:text-3xl mb-2">
-                A galera reunida. <span className="text-gradient">O jogo na sua casa.</span>
+              <p className="font-display font-bold text-2xl md:text-3xl mb-2 text-white">
+                O jogo na sua tela
               </p>
               <CTAButton variant="primary" className="mt-3">
                 <Trophy className="w-5 h-5" /> Quero ver os jogos
