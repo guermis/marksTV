@@ -410,7 +410,7 @@ function Benefits() {
     { icon: Zap, title: "Suporte humano 24/7", desc: "Atendimento direto pelo WhatsApp sempre que precisar." },
   ];
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-20 md:py-[90px]">
       <div className="container mx-auto px-5">
         <div className="text-center mb-14 max-w-2xl mx-auto reveal">
           <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">Por que escolher</p>
