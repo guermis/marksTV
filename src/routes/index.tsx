@@ -183,7 +183,7 @@ function Hero() {
     <section className="bg-hero relative overflow-hidden">
       <div className="absolute top-20 -left-32 w-96 h-96 rounded-full bg-primary/30 blur-[120px]" />
       <div className="absolute bottom-0 -right-32 w-96 h-96 rounded-full bg-accent/20 blur-[120px]" />
-      <div className="container mx-auto px-5 pt-16 pb-20 md:pt-24 md:pb-28 relative">
+      <div className="container mx-auto px-5 pt-16 pb-20 md:pt-24 md:pb-[90px] relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left reveal">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-semibold text-primary mb-6">
