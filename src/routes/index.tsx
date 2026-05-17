@@ -1,18 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import {
-  Tv, Smartphone, Laptop, Gamepad2, MonitorPlay,
+  Tv, Smartphone, Laptop, Gamepad2, MonitorPlay, Tablet, Sparkles,
   Zap, Trophy, ImageIcon, Wallet, Rocket, Check,
   ChevronDown, MessageCircle, Star, Play, Flame, Goal,
 } from "lucide-react";
-import heroDevices from "@/assets/hero-devices.jpg";
 import testimonial1 from "@/assets/testimonial-1.jpg";
 import testimonial2 from "@/assets/testimonial-2.jpg";
 import testimonial3 from "@/assets/testimonial-3.jpg";
-import familyWatching from "@/assets/family-watching.jpg";
-import sportsFootball from "@/assets/sports-football.jpg";
-import coupleMovie from "@/assets/couple-movie.jpg";
-import friendsSports from "@/assets/friends-sports.jpg";
+
+// Real photos (Unsplash) — keyword-based, always returns a relevant image
+const heroDevices     = "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=1600&q=80&auto=format&fit=crop";
+const familyWatching  = "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?w=1400&q=80&auto=format&fit=crop";
+const sportsFootball  = "https://images.unsplash.com/photo-1459865264687-595d652de67e?w=1600&q=80&auto=format&fit=crop";
+const coupleMovie     = "https://images.unsplash.com/photo-1543536448-1e76fc2795bf?w=1400&q=80&auto=format&fit=crop";
+const friendsSports   = "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=1400&q=80&auto=format&fit=crop";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -33,76 +35,7 @@ export const Route = createFileRoute("/")({
 
 const WHATSAPP_URL = "https://wa.me/5512991860629?text=" + encodeURIComponent("Olá! Gostaria de saber mais sobre o IPTV.");
 
-/* ---------------- Custom Cursor ---------------- */
-function CustomCursor() {
-  const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (window.matchMedia("(pointer: coarse)").matches) return;
-
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let ringX = mouseX;
-    let ringY = mouseY;
-    let raf = 0;
-
-    const onMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
-      }
-    };
-
-    const tick = () => {
-      ringX += (mouseX - ringX) * 0.18;
-      ringY += (mouseY - ringY) * 0.18;
-      if (ringRef.current) {
-        ringRef.current.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-
-    const onOver = (e: MouseEvent) => {
-      const t = e.target as HTMLElement | null;
-      if (t && t.closest('a, button, [role="button"], input, textarea, select, label, summary')) {
-        ringRef.current?.classList.add("is-hover");
-      }
-    };
-    const onOut = (e: MouseEvent) => {
-      const t = e.target as HTMLElement | null;
-      if (t && t.closest('a, button, [role="button"], input, textarea, select, label, summary')) {
-        ringRef.current?.classList.remove("is-hover");
-      }
-    };
-    const onDown = () => ringRef.current?.classList.add("is-down");
-    const onUp = () => ringRef.current?.classList.remove("is-down");
-
-    window.addEventListener("mousemove", onMove, { passive: true });
-    document.addEventListener("mouseover", onOver);
-    document.addEventListener("mouseout", onOut);
-    window.addEventListener("mousedown", onDown);
-    window.addEventListener("mouseup", onUp);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("mousemove", onMove);
-      document.removeEventListener("mouseover", onOver);
-      document.removeEventListener("mouseout", onOut);
-      window.removeEventListener("mousedown", onDown);
-      window.removeEventListener("mouseup", onUp);
-    };
-  }, []);
-
-  return (
-    <>
-      <div ref={ringRef} className="cursor-ring" aria-hidden="true" />
-      <div ref={dotRef} className="cursor-dot" aria-hidden="true" />
-    </>
-  );
-}
+/* Custom cursor removed — using native cursor */
 
 /* ---------------- Reveal on scroll ---------------- */
 function useReveal() {
@@ -142,7 +75,6 @@ function Index() {
   useReveal();
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <CustomCursor />
       <Header />
       <Hero />
       <Devices />
@@ -164,14 +96,14 @@ function Header() {
     <header className="sticky top-0 z-40 glass border-b border-white/5">
       <div className="container mx-auto px-5 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-9 h-9 rounded-lg bg-gradient-primary grid place-items-center shadow-glow">
+          <div className="w-9 h-9 rounded-lg bg-gradient-primary grid place-items-center">
             <Play className="w-4 h-4 text-primary-foreground fill-current" />
           </div>
           <span className="font-display font-bold text-lg tracking-tight">Marks IPTV</span>
         </div>
         <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
-          className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold px-5 py-2 rounded-full bg-gradient-primary text-primary-foreground hover:brightness-110 transition">
-          <MessageCircle className="w-4 h-4" /> Falar no WhatsApp
+          className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold px-5 py-2 rounded-full border border-primary/60 text-primary hover:bg-primary/10 transition tracking-widest uppercase">
+          Teste Grátis
         </a>
       </div>
     </header>
@@ -179,44 +111,54 @@ function Header() {
 }
 
 function Hero() {
+  const deviceIcons = [
+    { icon: Smartphone, label: "Celular" },
+    { icon: Laptop, label: "Notebook" },
+    { icon: MonitorPlay, label: "TV Box" },
+    { icon: Tablet, label: "Tablet" },
+  ];
   return (
     <section className="bg-hero relative overflow-hidden">
-      <div className="absolute top-20 -left-32 w-96 h-96 rounded-full bg-primary/30 blur-[120px]" />
-      <div className="absolute bottom-0 -right-32 w-96 h-96 rounded-full bg-accent/20 blur-[120px]" />
-      <div className="container mx-auto px-5 pt-16 pb-20 md:pt-24 md:pb-[90px] relative">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="text-center lg:text-left reveal">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-semibold text-primary mb-6">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              Liberação imediata após pagamento
-            </div>
-            <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05]">
+      <div className="container mx-auto px-5 pt-20 pb-24 md:pt-28 md:pb-[110px] relative">
+        <div className="grid lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-6 text-center lg:text-left reveal">
+            <h1 className="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl leading-[0.95] tracking-tight">
               O MELHOR<br />
-              <span className="text-gradient">IPTV DO BRASIL</span>
+              IPTV<br className="hidden sm:block" /> <span className="sm:hidden">DO BRASIL</span><span className="hidden sm:inline">DO BRASIL</span>
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
-              Assista onde e quando quiser. <span className="text-foreground font-medium">Cancele quando quiser.</span>
+            <p className="mt-7 text-lg md:text-xl text-muted-foreground max-w-md mx-auto lg:mx-0 leading-relaxed">
+              Assista onde e quando quiser.<br />
+              Cancele quando quiser.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-              <CTAButton variant="primary" className="text-lg px-8 py-5">
-                <Zap className="w-5 h-5" /> TESTE GRÁTIS POR 6 HORAS
+            <div className="mt-9">
+              <CTAButton variant="primary" className="text-base px-9 py-5 tracking-wide">
+                TESTE GRÁTIS POR 6 HORAS
               </CTAButton>
             </div>
-            <div className="mt-10 flex flex-wrap gap-6 justify-center lg:justify-start text-sm text-muted-foreground">
-              <Stat value="+17.000" label="Conteúdos" />
-              <Stat value="4K" label="Qualidade" />
-              <Stat value="24/7" label="Suporte" />
-            </div>
           </div>
-          <div className="relative reveal animate-float">
-            <div className="absolute -inset-8 bg-primary/30 blur-3xl rounded-full" />
+          <div className="lg:col-span-6 relative reveal">
             <img
               src={heroDevices}
-              alt="Marks IPTV exibido em Smart TV e celular"
-              width={1536}
-              height={1024}
-              className="relative rounded-2xl shadow-card w-full"
+              alt="Marks IPTV em Smart TV, celular e tablet"
+              loading="eager"
+              className="relative w-full h-auto object-contain"
             />
+          </div>
+        </div>
+
+        <div className="mt-12 flex items-center justify-between gap-6 flex-wrap reveal">
+          <div className="flex gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-primary" />
+            <span className="w-2.5 h-2.5 rounded-full border border-white/40" />
+          </div>
+          <div className="flex items-end gap-7 ml-auto">
+            {deviceIcons.map(({ icon: Icon, label }) => (
+              <div key={label} className="flex flex-col items-center gap-1.5 text-muted-foreground">
+                <Icon className="w-6 h-6" strokeWidth={1.4} />
+                <span className="text-[10px] uppercase tracking-widest font-semibold">{label}</span>
+              </div>
+            ))}
+            <Sparkles className="w-5 h-5 text-primary ml-2" />
           </div>
         </div>
       </div>
@@ -463,8 +405,8 @@ function Pricing() {
               key={plan.name}
               className={`reveal relative rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 ${
                 plan.highlight
-                  ? "glass-primary border border-primary/60 shadow-glow md:scale-105 md:py-12 hover:shadow-[0_30px_80px_-20px_oklch(0.65_0.24_27_/_0.7)]"
-                  : "glass hover:border-primary/50 hover:shadow-glow"
+                  ? "glass-primary border border-primary/60 md:scale-105 md:py-12"
+                  : "glass hover:border-primary/50"
               }`}
             >
               {plan.badge && (
@@ -525,7 +467,7 @@ function Testimonials() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {images.map((src, i) => (
-            <div key={i} className="reveal rounded-2xl overflow-hidden glass shadow-card hover:-translate-y-2 hover:shadow-glow transition-all duration-500">
+            <div key={i} className="reveal rounded-2xl overflow-hidden glass hover:-translate-y-2 transition-all duration-500">
               <img src={src} alt={`Depoimento de cliente ${i + 1}`} loading="lazy" className="w-full h-auto" />
             </div>
           ))}

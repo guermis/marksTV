@@ -79,11 +79,6 @@
     -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
-
-  /* Custom cursor — hide native cursor on devices that support fine pointers */
-  @media (pointer: fine) {
-    html, body, * { cursor: none !important; }
-  }
 }
 
 @layer utilities {
