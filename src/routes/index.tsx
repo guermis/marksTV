@@ -448,7 +448,7 @@ function Pricing() {
   const features = ["+17 mil conteúdos", "Filmes e séries em SD, HD, FullHD e 4K", "Liberação imediata", "Suporte via WhatsApp"];
 
   return (
-    <section id="planos" className="py-20 md:py-28">
+    <section id="planos" className="py-20 md:py-[90px]">
       <div className="container mx-auto px-5">
         <div className="text-center mb-14 reveal">
           <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-3">Nossos planos</p>
