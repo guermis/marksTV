@@ -193,7 +193,7 @@ function Devices() {
     { icon: MonitorPlay, label: "TV Box" },
     { icon: Smartphone, label: "Celular" },
     { icon: Laptop, label: "Notebook" },
-    { icon: Gamepad2, label: "Xbox One" },
+    { icon: Gamepad2, label: "Console" },
   ];
   const platforms = [
     "Netflix", "HBO Max", "Disney+", "Star+", "Amazon Prime Video",
