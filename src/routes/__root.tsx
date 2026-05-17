@@ -9,7 +9,6 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
-import { CustomCursor } from "@/components/custom-cursor";
 
 function NotFoundComponent() {
   return (
@@ -73,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Marks TV" },
+      { name: "description", content: "Streamline Converter is a modern, responsive landing page designed to convert visitors into leads for an IPTV service." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Marks TV" },
+      { property: "og:description", content: "Streamline Converter is a modern, responsive landing page designed to convert visitors into leads for an IPTV service." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Marks TV" },
+      { name: "twitter:description", content: "Streamline Converter is a modern, responsive landing page designed to convert visitors into leads for an IPTV service." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/cba3bd8d-92b7-4005-8884-4e21faeb150f/id-preview-de71d9c9--fbaf4cd0-0312-47cb-b0fa-afd0c71c6146.lovable.app-1778992085339.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/cba3bd8d-92b7-4005-8884-4e21faeb150f/id-preview-de71d9c9--fbaf4cd0-0312-47cb-b0fa-afd0c71c6146.lovable.app-1778992085339.png" },
     ],
     links: [
       {
@@ -114,7 +117,6 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <CustomCursor />
       <Outlet />
     </QueryClientProvider>
   );
