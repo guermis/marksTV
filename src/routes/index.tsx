@@ -246,7 +246,7 @@ function Devices() {
     "Apple TV+", "Globoplay", "Paramount+", "Hulu", "AMC+",
   ];
   return (
-    <section className="py-20 md:py-28 border-t border-white/5">
+    <section className="py-20 md:py-[90px] border-t border-white/5">
       <div className="container mx-auto px-5">
         <div className="text-center mb-14 reveal">
           <h2 className="font-display font-bold text-3xl md:text-5xl">
