@@ -476,7 +476,7 @@ function Testimonials() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {images.map((src, i) => (
-            <div key={i} className="reveal rounded-2xl overflow-hidden glass hover:-translate-y-2 transition-all duration-500">
+            <div key={i} className="reveal rounded-2xl overflow-hidden glass transition-all duration-700 ease-out will-change-transform hover:scale-[1.02]">
               <img src={src} alt={`Depoimento de cliente ${i + 1}`} loading="lazy" className="w-full h-auto" />
             </div>
           ))}
