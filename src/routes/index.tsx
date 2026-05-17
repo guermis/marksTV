@@ -38,7 +38,7 @@ export const Route = createFileRoute("/")({
 
 const WHATSAPP_URL = "https://wa.me/5512991860629?text=" + encodeURIComponent("Olá! Gostaria de saber mais sobre o IPTV.");
 
-/* Custom cursor removed — using native cursor */
+
 
 /* ---------------- Reveal on scroll ---------------- */
 function useReveal() {
