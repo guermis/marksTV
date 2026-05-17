@@ -193,7 +193,7 @@ function Devices() {
     { icon: MonitorPlay, label: "TV Box" },
     { icon: Smartphone, label: "Celular" },
     { icon: Laptop, label: "Notebook" },
-    { icon: Gamepad2, label: "Xbox One" },
+    { icon: Gamepad2, label: "Console" },
   ];
   const platforms = [
     "Netflix", "HBO Max", "Disney+", "Star+", "Amazon Prime Video",
@@ -290,8 +290,8 @@ function Sports() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-8">
-              <p className="font-display font-bold text-2xl md:text-3xl mb-2">
-                A galera reunida. <span className="text-gradient">O jogo na sua casa.</span>
+              <p className="font-display font-bold text-2xl md:text-3xl mb-2 text-white">
+                O jogo na sua tela
               </p>
               <CTAButton variant="primary" className="mt-3">
                 <Trophy className="w-5 h-5" /> Quero ver os jogos
@@ -412,9 +412,9 @@ function Pricing() {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`reveal relative rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 ${
+              className={`reveal relative rounded-3xl p-8 transition-all duration-700 ease-out will-change-transform hover:scale-[1.02] ${
                 plan.highlight
-                  ? "glass-primary border border-primary/60 md:scale-105 md:py-12"
+                  ? "glass-primary border border-primary/60 md:scale-105 md:py-12 hover:md:scale-[1.07]"
                   : "glass hover:border-primary/50"
               }`}
             >
@@ -476,7 +476,7 @@ function Testimonials() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {images.map((src, i) => (
-            <div key={i} className="reveal rounded-2xl overflow-hidden glass hover:-translate-y-2 transition-all duration-500">
+            <div key={i} className="reveal rounded-2xl overflow-hidden glass transition-all duration-700 ease-out will-change-transform hover:scale-[1.02]">
               <img src={src} alt={`Depoimento de cliente ${i + 1}`} loading="lazy" className="w-full h-auto" />
             </div>
           ))}
