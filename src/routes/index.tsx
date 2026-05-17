@@ -544,7 +544,7 @@ function FAQ() {
   ];
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-20 md:py-[90px]">
       <div className="container mx-auto px-5 max-w-3xl">
         <div className="text-center mb-12 reveal">
           <h2 className="font-display font-bold text-3xl md:text-5xl">
