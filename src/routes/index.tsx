@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import {
   Tv, Smartphone, Laptop, Gamepad2, MonitorPlay, Tablet, Sparkles,
-  Zap, Trophy, ImageIcon, Wallet, Rocket, Check,
-  ChevronDown, MessageCircle, Star, Play, Flame, Goal,
+  Zap, Trophy, ImageIcon, Wallet, Rocket, Check, Award, Clapperboard,
+  ChevronDown, MessageCircle, Star, Play, Flame, Goal, ArrowRight,
 } from "lucide-react";
 import testimonial1 from "@/assets/testimonial-1.jpg";
 import testimonial2 from "@/assets/testimonial-2.jpg";
@@ -112,20 +112,30 @@ function Header() {
 }
 
 function Hero() {
-  const deviceIcons = [
-    { icon: Smartphone, label: "Celular" },
-    { icon: Laptop, label: "Notebook" },
-    { icon: MonitorPlay, label: "TV Box" },
-    { icon: Tablet, label: "Tablet" },
+  const stats = [
+    { icon: MonitorPlay, value: "+20.000", label: "Canais" },
+    { icon: Clapperboard, value: "+60.000", label: "Filmes e séries" },
+    { icon: Award, value: "Qualidade", label: "FHD e 4K" },
+    { icon: Tv, value: "Assista em", label: "Todos dispositivos" },
   ];
   return (
-    <section className="bg-hero relative overflow-hidden">
-      <div className="container mx-auto px-5 pt-20 pb-24 md:pt-28 md:pb-[110px] relative">
+    <section className="relative overflow-hidden bg-[#0a0405]">
+      {/* Red glow background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[80%] h-[110%] bg-[radial-gradient(ellipse_at_center,rgba(220,38,38,0.45),transparent_60%)]" />
+        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-[radial-gradient(ellipse_at_bottom,rgba(220,38,38,0.3),transparent_70%)]" />
+      </div>
+
+      <div className="container mx-auto px-5 pt-16 pb-20 md:pt-20 md:pb-24 relative">
         <div className="grid lg:grid-cols-12 gap-10 items-center">
+          {/* Left column */}
           <div className="lg:col-span-6 text-center lg:text-left reveal">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/60 bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest mb-7">
+              <Tv className="w-3.5 h-3.5" /> IPTV Premium
+            </div>
             <h1 className="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl leading-[0.95] tracking-tight">
-              O MELHOR<br />
-              IPTV<br className="hidden sm:block" /> <span className="sm:hidden">DO BRASIL</span><span className="hidden sm:inline">DO BRASIL</span>
+              O MELHOR IPTV<br />
+              <span className="text-gradient">DO BRASIL</span>
             </h1>
             <p className="mt-7 text-lg md:text-xl text-muted-foreground max-w-md mx-auto lg:mx-0 leading-relaxed">
               Assista onde e quando quiser.<br />
@@ -133,33 +143,32 @@ function Hero() {
             </p>
             <div className="mt-9">
               <CTAButton variant="primary" className="text-base px-9 py-5 tracking-wide">
-                TESTE GRÁTIS POR 6 HORAS
+                TESTE GRÁTIS POR 6 HORAS <ArrowRight className="w-5 h-5" />
               </CTAButton>
             </div>
+
+            {/* Stats row */}
+            <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-xl mx-auto lg:mx-0">
+              {stats.map(({ icon: Icon, value, label }) => (
+                <div key={label} className="flex flex-col items-center lg:items-start gap-2">
+                  <Icon className="w-7 h-7 text-primary" strokeWidth={1.6} />
+                  <div className="text-center lg:text-left">
+                    <div className="font-display font-bold text-sm uppercase tracking-wide">{value}</div>
+                    <div className="text-[11px] uppercase tracking-widest text-muted-foreground">{label}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
+
+          {/* Right column — devices */}
           <div className="lg:col-span-6 relative reveal">
             <img
               src={heroDevices}
               alt="Marks IPTV em Smart TV, celular e tablet"
               loading="eager"
-              className="relative w-full h-auto object-contain"
+              className="relative w-full h-auto object-contain drop-shadow-[0_30px_60px_rgba(220,38,38,0.35)]"
             />
-          </div>
-        </div>
-
-        <div className="mt-12 flex items-center justify-between gap-6 flex-wrap reveal">
-          <div className="flex gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-primary" />
-            <span className="w-2.5 h-2.5 rounded-full border border-white/40" />
-          </div>
-          <div className="flex items-end gap-7 ml-auto">
-            {deviceIcons.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex flex-col items-center gap-1.5 text-muted-foreground">
-                <Icon className="w-6 h-6" strokeWidth={1.4} />
-                <span className="text-[10px] uppercase tracking-widest font-semibold">{label}</span>
-              </div>
-            ))}
-            <Sparkles className="w-5 h-5 text-primary ml-2" />
           </div>
         </div>
       </div>
