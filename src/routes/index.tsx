@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import {
-  Tv, Smartphone, Laptop, Gamepad2, MonitorPlay, Tablet, Sparkles,
+  Tv, Smartphone, Laptop, Gamepad2, MonitorPlay,
   Zap, Trophy, ImageIcon, Wallet, Rocket, Check, Award, Clapperboard,
-  ChevronDown, MessageCircle, Star, Play, Flame, Goal, ArrowRight,
+  ChevronDown, MessageCircle, Star, Play, Goal, ArrowRight,
 } from "lucide-react";
 import testimonial1 from "@/assets/testimonial-1.jpg";
 import testimonial2 from "@/assets/testimonial-2.jpg";
