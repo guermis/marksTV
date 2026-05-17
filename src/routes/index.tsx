@@ -178,15 +178,6 @@ function Hero() {
   );
 }
 
-function Stat({ value, label }: { value: string; label: string }) {
-  return (
-    <div>
-      <div className="font-display font-bold text-2xl text-foreground">{value}</div>
-      <div className="text-xs uppercase tracking-wider">{label}</div>
-    </div>
-  );
-}
-
 function Devices() {
   const devices = [
     { icon: Tv, label: "Smart TV" },
