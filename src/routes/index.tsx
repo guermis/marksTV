@@ -510,7 +510,7 @@ function Pricing() {
 function Testimonials() {
   const images = [testimonial1, testimonial2, testimonial3];
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-20 md:py-[90px]">
       <div className="container mx-auto px-5">
         <div className="text-center mb-14 reveal">
           <div className="flex justify-center gap-1 mb-4">
