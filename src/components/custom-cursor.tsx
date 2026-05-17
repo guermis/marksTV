@@ -1,78 +1,84 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function CustomCursor() {
-  const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
+  const [enabled, setEnabled] = useState(false);
+  const [hovering, setHovering] = useState(false);
+
+  // Dot follows mouse exactly
+  const dotX = useMotionValue(-100);
+  const dotY = useMotionValue(-100);
+
+  // Ring uses spring for fluid trailing
+  const ringX = useMotionValue(-100);
+  const ringY = useMotionValue(-100);
+  const springX = useSpring(ringX, { stiffness: 250, damping: 30, mass: 0.5 });
+  const springY = useSpring(ringY, { stiffness: 250, damping: 30, mass: 0.5 });
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (window.matchMedia("(pointer: coarse)").matches) return;
-
-    const dot = dotRef.current;
-    const ring = ringRef.current;
-    if (!dot || !ring) return;
-
-    let mx = window.innerWidth / 2;
-    let my = window.innerHeight / 2;
-    let rx = mx;
-    let ry = my;
-
-    dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
-    ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
+    setEnabled(true);
 
     const onMove = (e: MouseEvent) => {
-      mx = e.clientX;
-      my = e.clientY;
-      dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`;
+      dotX.set(e.clientX);
+      dotY.set(e.clientY);
+      ringX.set(e.clientX);
+      ringY.set(e.clientY);
     };
 
-    const tick = () => {
-      rx += (mx - rx) * 0.2;
-      ry += (my - ry) * 0.2;
-      ring.style.transform = `translate3d(${rx}px, ${ry}px, 0) translate(-50%, -50%)`;
-      raf = requestAnimationFrame(tick);
-    };
-    let raf = requestAnimationFrame(tick);
-
-    const onDown = () => ring.classList.add("is-down");
-    const onUp = () => ring.classList.remove("is-down");
-
-    const isInteractive = (el: EventTarget | null) =>
-      el instanceof Element &&
-      !!el.closest(
-        'a, button, [role="button"], input, select, textarea, label, summary, [data-cursor-hover]'
-      );
-
+    const selector = 'a, button, input, textarea, select, [role="button"], [data-cursor-hover]';
     const onOver = (e: MouseEvent) => {
-      if (isInteractive(e.target)) ring.classList.add("is-hover");
+      const t = e.target as Element | null;
+      if (t && t.closest && t.closest(selector)) setHovering(true);
     };
     const onOut = (e: MouseEvent) => {
-      if (isInteractive(e.target)) ring.classList.remove("is-hover");
+      const t = e.target as Element | null;
+      if (t && t.closest && t.closest(selector)) setHovering(false);
     };
 
     window.addEventListener("mousemove", onMove, { passive: true });
-    window.addEventListener("mousedown", onDown);
-    window.addEventListener("mouseup", onUp);
     window.addEventListener("mouseover", onOver);
     window.addEventListener("mouseout", onOut);
 
-    document.documentElement.classList.add("has-custom-cursor");
-
     return () => {
-      cancelAnimationFrame(raf);
       window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("mousedown", onDown);
-      window.removeEventListener("mouseup", onUp);
       window.removeEventListener("mouseover", onOver);
       window.removeEventListener("mouseout", onOut);
-      document.documentElement.classList.remove("has-custom-cursor");
     };
-  }, []);
+  }, [dotX, dotY, ringX, ringY]);
+
+  if (!enabled) return null;
 
   return (
     <>
-      <div ref={ringRef} className="cursor-ring" aria-hidden />
-      <div ref={dotRef} className="cursor-dot" aria-hidden />
+      <motion.div
+        aria-hidden
+        className="pointer-events-none fixed top-0 left-0 z-[9999] h-1 w-1 rounded-full bg-white"
+        style={{
+          x: dotX,
+          y: dotY,
+          translateX: "-50%",
+          translateY: "-50%",
+          mixBlendMode: "difference",
+        }}
+      />
+      <motion.div
+        aria-hidden
+        className="pointer-events-none fixed top-0 left-0 z-[9999] h-8 w-8 rounded-full border border-white"
+        style={{
+          x: springX,
+          y: springY,
+          translateX: "-50%",
+          translateY: "-50%",
+          mixBlendMode: "difference",
+        }}
+        animate={{
+          scale: hovering ? 1.6 : 1,
+          opacity: hovering ? 0.5 : 1,
+        }}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+      />
     </>
   );
 }
