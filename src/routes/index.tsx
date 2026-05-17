@@ -403,6 +403,7 @@ function Pricing() {
           {plans.map((plan) => (
             <div
               key={plan.name}
+              data-cursor-hover
               className={`reveal relative rounded-3xl p-8 transition-all duration-700 ease-out will-change-transform hover:scale-[1.02] ${
                 plan.highlight
                   ? "glass-primary border border-primary/60 md:scale-105 md:py-12 hover:md:scale-[1.07]"
